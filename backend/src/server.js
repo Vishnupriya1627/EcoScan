@@ -30,7 +30,6 @@ async function detectItems(file) {
 
 app.get("/api/health", (_req, res) => res.json({ status: "ok" }));
 
-// Image in, full result out
 app.post("/api/scan", upload.single("image"), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: "No image uploaded (field name: image)" });
   if (!ALLOWED.has(req.file.mimetype))

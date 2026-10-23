@@ -4,7 +4,7 @@ export async function scanClothing(file) {
   const formData = new FormData();
   formData.append("image", file);
 
-  const response = await fetch(`${API_URL}/scan`, {
+  const response = await fetch(`${API_URL}/api/scan`, {
     method: "POST",
     body: formData
   });
