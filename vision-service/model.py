@@ -1,11 +1,9 @@
-import io, json, os
+import io, json, os, time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutTimeout
 
-import torch
 from PIL import Image
 from google import genai
 from google.genai import types
-from transformers import CLIPModel, CLIPProcessor
 
 ALLOWED_TYPES = ["tshirt", "shirt", "jeans", "trousers", "dress",
                  "jacket", "sweater", "shorts", "skirt", "shoes", "hoodie"]
@@ -26,8 +24,9 @@ TYPE is one of: {", ".join(ALLOWED_TYPES)}, other.
 COLOR is the main color in plain words. COUNT is an integer.
 If no clothing is visible, return {{"items":[]}}."""
 
+
 def _gemini(image: Image.Image):
-    img = image.copy()
+    img = image.convert("RGB")
     img.thumbnail((768, 768))
     buf = io.BytesIO()
     img.save(buf, format="JPEG", quality=85)
@@ -51,33 +50,22 @@ def _gemini(image: Image.Image):
                 last_err = e
                 print(f"{model_name} attempt {attempt+1} failed: {e!r}", flush=True)
                 if "404" in str(e) or "NOT_FOUND" in str(e):
-                    break         
+                    break
                 time.sleep(1.5)
     raise last_err
 
-# ---------- Fallback: CLIP on CPU ----------
-_clip = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").eval()
-_clip_proc = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-_labels = ALLOWED_TYPES
-_text_prompts = [f"a photo of a {l}" for l in _labels]
 
-def _clip_classify(image: Image.Image):
-    inputs = _clip_proc(text=_text_prompts, images=image, return_tensors="pt", padding=True)
-    with torch.inference_mode():
-        probs = _clip(**inputs).logits_per_image.softmax(dim=1)[0]
-    idx = int(probs.argmax())
-    return {"items": [{"type": _labels[idx], "color": "uncertain", "quantity": 1}]}
-
-# ---------- Public function (same name your app.py already calls) ----------
 _pool = ThreadPoolExecutor(max_workers=2)
 
+
 def analyze_clothing(image: Image.Image):
+    error = None
     try:
-        data = _pool.submit(_gemini, image).result(timeout=12)
+        data = _pool.submit(_gemini, image).result(timeout=25)
     except (FutTimeout, Exception) as e:
-        print("Gemini failed, using CLIP fallback:", e, flush=True)
-        data = _clip_classify(image)
-        data["fallback"] = True
+        print("Gemini failed:", repr(e), flush=True)
+        data = {"items": []}
+        error = "analysis_failed"
 
     items = []
     for it in data.get("items", [])[:20]:
@@ -93,4 +81,8 @@ def analyze_clothing(image: Image.Image):
         items.append({"type": t,
                       "color": str(it.get("color", "uncertain"))[:40],
                       "quantity": max(1, min(q, 20))})
-    return {"items": items, "fallback": data.get("fallback", False)}
+
+    result = {"items": items, "fallback": False}
+    if error:
+        result["error"] = error
+    return result
