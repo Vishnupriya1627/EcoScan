@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 export async function scanClothing(file) {
   const formData = new FormData();
