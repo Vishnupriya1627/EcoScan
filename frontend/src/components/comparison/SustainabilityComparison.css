@@ -1,0 +1,261 @@
+
+.sustainability-comparison {
+  margin: 28px 0;
+  padding: 28px;
+  border: 1px solid #dce8df;
+  border-radius: 22px;
+  background: #ffffff;
+  color: #20372b;
+}
+
+.comparison-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.comparison-eyebrow {
+  color: #47845b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.comparison-heading h2 {
+  margin: 8px 0;
+  font-size: clamp(22px, 3vw, 29px);
+  letter-spacing: -0.8px;
+}
+
+.comparison-heading p,
+.comparison-baseline p,
+.comparison-scenario p,
+.comparison-repair p {
+  color: #718077;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.comparison-heading p {
+  max-width: 520px;
+  margin: 0;
+}
+
+.comparison-leaf {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 15px;
+  background: #edf6ee;
+  font-size: 23px;
+}
+
+.comparison-selector {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.comparison-selector label {
+  color: #52665a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.comparison-selector select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dce8df;
+  border-radius: 10px;
+  background: #fff;
+  color: #20372b;
+  font: inherit;
+}
+
+.comparison-baseline {
+  padding: 22px;
+  border: 1px solid #dce8df;
+  border-radius: 16px;
+  background: #f5f9f5;
+}
+
+.comparison-item-label {
+  color: #688072;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.comparison-baseline h3 {
+  margin: 8px 0;
+  font-size: 17px;
+}
+
+.comparison-baseline-value {
+  margin-top: 12px;
+  color: #28683e;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.comparison-baseline p {
+  margin: 5px 0 0;
+}
+
+.comparison-scenarios {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.comparison-scenario {
+  padding: 18px;
+  border: 1px solid #e5ece7;
+  border-radius: 14px;
+}
+
+.comparison-scenario.is-baseline {
+  background: #fafcfb;
+}
+
+.comparison-scenario-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.comparison-scenario h3,
+.comparison-repair h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.comparison-scenario p {
+  margin: 5px 0 0;
+}
+
+.comparison-scenario-value {
+  flex-shrink: 0;
+  color: #243c2e;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.comparison-bar-track {
+  width: 100%;
+  height: 9px;
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #edf1ee;
+}
+
+.comparison-bar {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.35s ease;
+}
+
+.baseline-bar {
+  background: #7e9384;
+}
+
+.alternative-bar {
+  background: #56a66a;
+}
+
+.comparison-scenario-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  color: #748278;
+  font-size: 11px;
+}
+
+.comparison-scenario-bottom strong {
+  color: #287143;
+  font-size: 12px;
+}
+
+.comparison-repair {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #d8eadc;
+  border-radius: 14px;
+  background: #f1f8f1;
+}
+
+.comparison-repair-icon {
+  font-size: 24px;
+}
+
+.comparison-repair h3 {
+  margin: 0 0 6px;
+}
+
+.comparison-repair p {
+  margin: 0;
+}
+
+.comparison-repair-note {
+  display: inline-block;
+  margin-top: 8px;
+  color: #34744a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.comparison-disclaimer {
+  margin: 18px 0 0;
+  color: #78847c;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.comparison-disclaimer strong {
+  color: #53665a;
+}
+
+@media (max-width: 600px) {
+  .sustainability-comparison {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .comparison-heading {
+    margin-bottom: 18px;
+  }
+
+  .comparison-scenario-top {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .comparison-baseline {
+    padding: 18px;
+  }
+
+  .comparison-baseline-value {
+    font-size: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comparison-bar {
+    transition: none;
+  }
+}

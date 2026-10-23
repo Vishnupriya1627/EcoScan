@@ -1,0 +1,9 @@
+torch
+torchvision
+git+https://github.com/huggingface/transformers
+accelerate
+pillow
+fastapi
+uvicorn
+python-multipart
+qwen-vl-utils

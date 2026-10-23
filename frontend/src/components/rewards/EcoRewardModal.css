@@ -1,0 +1,328 @@
+
+.eco-reward-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 24px 16px;
+  background: rgba(17, 37, 24, 0.62);
+  backdrop-filter: blur(6px);
+  animation: eco-overlay-in 180ms ease-out;
+}
+
+.eco-reward-modal {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 460px;
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  padding: 34px 28px 26px;
+  border: 1px solid #e4eadf;
+  border-radius: 28px;
+  background: #fbfcf8;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: eco-modal-in 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.eco-reward-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid #e4eadf;
+  border-radius: 50%;
+  background: white;
+  color: #728173;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.eco-reward-close:hover {
+  background: #edf3e9;
+}
+
+.eco-reward-icon {
+  position: relative;
+  display: grid;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 18px;
+  place-items: center;
+  border-radius: 24px;
+  background: #e3f0dc;
+  color: #315b37;
+}
+
+.eco-reward-sparkle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 3px solid #fbfcf8;
+  border-radius: 50%;
+  background: #f4d78b;
+  color: #73571a;
+  animation: eco-sparkle 1.6s ease-in-out infinite;
+}
+
+.eco-reward-eyebrow {
+  margin: 0 0 8px;
+  color: #53805a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.eco-reward-title {
+  margin: 0;
+  color: #203c2b;
+  font-size: clamp(27px, 6vw, 34px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.eco-reward-description {
+  max-width: 340px;
+  margin: 10px auto 24px;
+  color: #728173;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.eco-points-highlight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid #d6e8cd;
+  border-radius: 18px;
+  background: linear-gradient(120deg, #edf6e7, #f7f8e9);
+  text-align: left;
+}
+
+.eco-points-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 16px;
+  background: #dcebd5;
+  color: #315b37;
+}
+
+.eco-points-number {
+  margin: 0;
+  color: #315b37;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.eco-points-caption {
+  margin: 4px 0 0;
+  color: #728173;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.eco-reward-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.eco-reward-stat {
+  padding: 17px 10px;
+  border: 1px solid #e4eadf;
+  border-radius: 18px;
+  background: white;
+}
+
+.eco-stat-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 10px;
+  place-items: center;
+  border-radius: 12px;
+  background: #e6f0df;
+  color: #39844b;
+}
+
+.eco-stat-icon-gold {
+  background: #fbf0cf;
+  color: #98721f;
+}
+
+.eco-stat-label {
+  margin: 0;
+  color: #728173;
+  font-size: 12px;
+}
+
+.eco-stat-value {
+  margin: 5px 0 0;
+  color: #203c2b;
+  font-size: clamp(19px, 5vw, 24px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.eco-stat-unit {
+  margin: 4px 0 0;
+  color: #849184;
+  font-size: 11px;
+}
+
+.eco-reward-note {
+  margin: 18px 0;
+  color: #728173;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.eco-reward-primary {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 14px;
+  background: #315b37;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.eco-reward-primary:hover {
+  transform: translateY(-1px);
+  background: #25472b;
+}
+
+.eco-reward-secondary {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: #728173;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.eco-reward-secondary:hover {
+  color: #203c2b;
+}
+
+.eco-confetti-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.eco-confetti-piece {
+  position: absolute;
+  top: -24px;
+  border-radius: 3px;
+  opacity: 0;
+  animation-name: eco-confetti-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+}
+
+@keyframes eco-confetti-fall {
+  0% {
+    transform: translate3d(0, -10px, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(25px, 105vh, 0)
+      rotate(var(--piece-rotation));
+    opacity: 0;
+  }
+}
+
+@keyframes eco-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes eco-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes eco-sparkle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(12deg) scale(1.12);
+  }
+}
+
+@media (max-width: 420px) {
+  .eco-reward-modal {
+    padding: 30px 18px 22px;
+    border-radius: 23px;
+  }
+
+  .eco-points-highlight {
+    gap: 11px;
+    padding: 14px;
+  }
+
+  .eco-points-number {
+    font-size: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eco-reward-overlay,
+  .eco-reward-modal,
+  .eco-reward-sparkle,
+  .eco-confetti-piece {
+    animation: none;
+  }
+
+  .eco-confetti-piece {
+    display: none;
+  }
+}

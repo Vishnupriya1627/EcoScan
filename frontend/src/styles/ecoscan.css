@@ -1,0 +1,61 @@
+/* Smooth in-page navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes ecoscan-sweep {
+  0% { top: 5%; opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { top: 95%; opacity: 0.4; }
+}
+
+.ecoscan-sweep {
+  animation: ecoscan-sweep 2.4s ease-in-out infinite;
+}
+
+@keyframes ecoscan-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.ecoscan-float {
+  animation: ecoscan-float 4s ease-in-out infinite;
+}
+
+/* Navbar points badge: pop when points are earned */
+@keyframes ecoscan-pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.14); box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.22); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+.ecoscan-pop {
+  animation: ecoscan-pop 0.7s ease-out;
+}
+
+@keyframes ecoscan-gain {
+  0% { opacity: 0; transform: translateY(8px) scale(0.8); }
+  20% { opacity: 1; transform: translateY(0) scale(1); }
+  80% { opacity: 1; transform: translateY(-4px) scale(1); }
+  100% { opacity: 0; transform: translateY(-10px) scale(1); }
+}
+
+.ecoscan-gain {
+  animation: ecoscan-gain 2.6s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ecoscan-sweep,
+  .ecoscan-float,
+  .ecoscan-pop {
+    animation: none;
+  }
+
+  .ecoscan-gain {
+    animation: none;
+  }
+}
