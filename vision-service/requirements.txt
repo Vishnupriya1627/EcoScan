@@ -1,9 +1,5 @@
-torch
-torchvision
-git+https://github.com/huggingface/transformers
-accelerate
-pillow
 fastapi
 uvicorn
+google-generativeai
 python-multipart
-qwen-vl-utils
+pillow
